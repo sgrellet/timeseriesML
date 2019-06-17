@@ -1,0 +1,164 @@
+Evaluation of standards for representing data as time series
+
+
+
+Introduction	1
+Why TSML	2
+Six use cases	3
+Derived requirements from use cases	7
+TSML versions vs. TSWG requirements	8
+Ecosystem of user communities and tools/clients	9
+Recommendations	10
+
+
+ Introduction
+
+Data from NASA and related Earth science missions typically are collected and archived as continuous spatial fields, with data sequenced in time, one time step per file. Hydrology and many other Earth science communities, on the other hand, typically work with discrete spatial objects (e.g., watersheds, river reaches, and point observation sites) and time-varying data contained in time series associated with these spatial objects. Many NASA data products, accessed as time series of single spatial locations, are potentially of significant benefit to these user communities, if the time series could be easily accessed in a well-defined, standardized way. The Time Series Working Group (TSWG) was formed with the main underlying goal to help NASA become more engaged in the international effort in standardizing time series representation and, thus, to ensure that NASA user needs are represented, addressed, and incorporated in future standards. 
+
+This report summarizes the investigations of the TSWG over the past four years. The TSWG began with an initial survey and evaluation of existing potentially suitable standards and, starting in Year 2, narrowed its focus to the Open Geospatial Consortium (OGC) TimeseriesML (TSML) standard. Evaluation considerations that resulted in the focus on TSML are summarized in Section 2. The TSWG also began to engage with the TSML Standards Working Group (SWG), to identify any gaps in, and corresponding desired enhancements to, TSML that might be addressed in future versions. The TSWG derived these desired enhancements or requirements mainly by developing use cases (Sec. 3). As requirements emerged from these use cases (Sec. 4 and 5), it became clear that there may not be a single solution (i.e., TSML) for all use cases; rather, solutions may be use case-specific. Also, the deliberate process of TSML version updates meant that any enhancements in future versions that would satisfy TSWG requirements would take effect beyond the end of the current and final year of the TSWG. Thus, during Year 4, the TSWG began to broaden its investigations beyond TSML 1.2, to explore other options (Sec. 6). The TSWG is formally ending with this final report; however, the ongoing interactions with the OGC TSML SWG and other relevant OGC groups will continue, to ensure, as much as possible, that the TSWG requirements are incorporated into future versions of TSML or are satisfied by other non-TSML options (e.g., SWE Common) (Sec. 7).
+ Why TSML
+There are several reasons that led the TSWG to focus on TSML as a potentially suitable standard for time series data.
+
+TSML is part of the OGC ecosystem of standards.
+
+TSML is an OGC profile that was built upon other OGC specifications that in themselves take some time to become knowledgeable in. Understanding these specifications is critical as TSML inherit concepts and elements from these. It is important that one understand OGC O&M, SensorML, GML and also take a look at SWE Common as it is also a means to express time series that maybe better provide a better solution, or that could be used we you need to return multiple values for a time step.
+
+Need WML footnote.
+
+
+
+Availability of existing tools for use with TSML
+TSML is not just an XSD specification that you validate against. The specifications that TSML is built upon have abstract elements. The TSML specification has strict rules found within the specification that need to be followed. It is these rules that you need to be cognitive of. There is a schematron implemented for this specification and if you plan to implement code that adheres to this profile then you need to run your output though this the schematron available for the TSML to make sure you are indeed meeting the specification.    
+
+
+
+Integration of metadata with data
+TSML has many features that make it a good encoding when you have metadata that you want to deliver along with the data inside one output vehicle. One can associate metadata to:
+1) an entire document containing many time series 2)  each time series, and 3) each individual time step. An example of the latter might be an earthquake displacement measurements that happened during a single time step. TSML also allows changes to metadata over time, which can all be encoded in a single output parameter. Multiple time series and features, that constitute a collection, can also be made available within a single output instance. Time steps do not have to be regular. Encoding of data values can be optimized to reduce the number of repeated tags required per time step reducing the size of output required. TSML also allows you to specify what value you use to specify a missing value.
+
+
+<rich metadata>
+When you have a need to specify a lot of metadata along with your data, TimeSeries ML (TSML) could be a good choice for encoding data for delivery to your customers. However, the current limitations of only being able to deliver a single floating number for each timestep in a time series is a major limitation of this profile.
+
+ Six use cases
+
+The requirements compiled by the TSWG were derived from six use cases, as described in the following sections.
+
+Global Precipitation Measurement (GPM) Integrated Multi-Satellite Retrievals for GPM (IMERG) (POC: George Huffman)
+
+The Integrated Multi-satellitE Retrievals for the Global Precipitation Measurement (GPM) mission (IMERG) algorithm is intended to intercalibrate, merge, and interpolate “all” satellite passive microwave precipitation estimates, together with microwave-calibrated infrared (IR) satellite estimates, precipitation gauge analyses, and potentially other precipitation estimators at fine time and space scales for the Tropical Rainfall Measuring Mission (TRMM) and GPM eras (1998 to the present) over the entire globe. The system is run several times for each observation time, first giving a quick estimate and successively providing better estimates as more data arrive. The final step uses monthly gauge data to create research-level products. For a demonstration, the Early Run, which is the first pass computed about 4 hours after observation time, is considered. Each IMERG data set is provided on a 0.1°x0.1° lat./long. grid over the entire globe, and one is created every half-hour over the period April 2014 to the then-current present, minus whatever latency the product has (4 hours for the Early Run). In Spring 2019, the record will be extended back to June 2000.
+
+The use case is that some users wish to work with a time series of the IMERG data fields at a single grid box or a few grid boxes. See IMERG use case for a complete list of data fields available in all IMERG products; the italicized variables are those that typical users find the most useful.
+
+UNAVCO Global Positioning System (GPS) (POC: Doug Ertz)
+
+UNAVCO collects data from GPS permanent stations in real time and daily and uses it to produce position files for individual stations. Each file   provides daily measurements that show the movement of the station in three dimensions (North, East, and Up) since that station started collecting data. These position files are in CSV format, with a daily timestamp for each row. The data follows multiple header lines defining the current metadata associated with the station. Not included in the files are Important event metadata associated with certain timeframes within the data collection period, such as station equipment changes and nearby earthquakes.
+
+UNAVCO supports FTP and web services for obtaining the GPS data. The outputs from the web services are in GeoCSV format. This format was a result of an EarthCube Building Blocks project to facilitate data sharing between different science disciplines. GeoCSV has not been widely accepted and also lacks the ability to associate metadata with specified timeframes.
+
+UNAVCO is looking for a format that (1) is widely known and used and, thus, compatible with other tools and (2) would allow for richer metadata to enable users to better understand and explain data of Earth’s crustal movement.  
+
+Laboratory for Atmospheric and Space Physics (LASP) Solar Radiation and Climate Experiment (SORCE) (POC: Stephane Beland)
+
+The Solar Radiation and Climate Experiment (SORCE) has been taking total solar irradiance (TSI) and Solar Spectral Irradiance measurements since 2003. The Total Irradiance Monitor (TIM) measures the Total Solar Irradiance (TSI), the spatial and spectrally integrated solar radiation incident at the top of the Earth’s atmosphere, expressed in Watts/m2. The Spectral Irradiance Monitor (SIM) measures the Solar Spectral Irradiance (SSI), the spatially integrated spectral irradiance incident at the top of the Earth’s atmosphere, expressed in Watts/m2/nm. The data are published from observation intervals of 6-hours and 24-hours for TIM and of 12-hours and 24-hours for SIM. Each SIM spectrum covers the wavelength range from 240 nm to 2400 nm in 1495 irregular wavelength bins, matching the dispersion of the instrument’s prism optics. The calibrated time-series data are made publicly available to the scientific community from the LASP website and from the Goddard Earth Sciences Data and Information Services Center (GES DISC).
+
+The use case is that some users wish to work with a time series of the SORCE data fields over a specific time range. See SORCE use case for a complete list of data fields available in all SORCE TIM and SIM products.
+
+NASA/CNES Surface Water and Ocean Topography (SWOT) (POC: Jessica Hausman)
+
+The Surface Water & Ocean Topography (SWOT) mission brings together two communities focused on a better understanding of the world's oceans and its terrestrial surface waters. U.S. and French oceanographers and hydrologists and international partners have joined forces to develop this new space mission to make the first global survey of Earth's surface water, observe the fine details of the ocean's surface topography, and measure how water bodies change over time. The SWOT satellite mission, with its wide-swath altimetry technology, is a means of completely covering the world’s oceans and freshwater bodies with repeated high-resolution elevation measurements. SWOT is a truly multidisciplinary cooperative international effort representing the “first hydrology satellite mission.” SWOT will produce river, lake, and reservoir heights in a vector format, probably shapefiles.
+
+There needs to be extra metadata (probably ISO 19115) captured, other than what are in the .shp file. These metadata probably will be in XML. Because this is hydrology focused, the SWOT team would like to use a convention that is already recognized by the community. WaterML or TSML might work. Basically, the requirement is to have enough metadata in TSML to provide enough provenance information, along with data description. TSML would not be used for time series instances, but just for the descriptive metadata.
+
+This use case represents use of the SWOT data by a hydrologist for comparison with gauge data. This could be published from a DAAC. If the user wants a time series of SWOT data at a fixed location and the DAAC provides a service that can generate that time series, metadata would need to accompany it.
+
+Aqua Atmospheric Infrared Sounder (AIRS) Level 2 swath (POC: Thomas Hearty)
+
+NASA satellite observations are often validated using comparisons of ground station (or balloon) measurements compared with Level 2 satellite observations. Because Low Earth Orbit satellites usually do not observe the exact location on earth at exactly the same time every day, a time series of these observations can be irregular in both space and time.  Therefore, validation teams often select all of the observations within a radius and within a given time threshold. However, the region of interest need not be circular; it could be any closed shape. For a circular region, it is often important to know the location and time of an observation within that region relative to those of the center of the circle. Table 1 in AIRS Level 2 swath use case lists the relevant variables of AIRS, MERRA-2, and NOAA stations. A time series of the AIRS variables have irregular time intervals as well as irregular locations. A time series of the MERRA-2 variables are sampled at regular time intervals for an average region. A time series of the NOAA station measurements are sampled at a single point at regular time intervals. NOAA temperature stations are irregularly spaced (not always corresponding to AIRS or MERRA observations). These stations could also be irregular in time, e.g., due to snow cover.
+
+The use case is that some users wish to work with an irregular time series of all the variables of interest at each time step, along with its location, contained in a single file.
+
+Moving “platform” of event (hurricane) track (POC: Bill Teng)
+
+The general category of this use case is time series of data from a moving platform. Specific use cases derive from the nature of the platform. The latter could be, e.g., a UAV in the air or a rain-sensing umbrella on the ground. In the current specific use case, the time series is along the track of a natural event (e.g., hurricane), and the event is the “platform.” Time steps are of points along the track; the time steps could be regular or irregular. Location of the points varies from point to point. (This use case originated from a discussion with Charles Ichoku, a research scientist formerly at NASA GSFC.)
+
+For the current version of this use case, the assumption is each ROI is aggregated, i.e., there is a single value per variable per time step. Otherwise would be a major new requirement for TSML.
+If aggregated to, say, mean and std dev., then this use case would be like that for GPM IMERG and UNAVCO GPS--except lat-lon for each time step would differ and Δt between time steps can be irregular.
+Main new requirement compared with the other use cases: Different lat-lon for each time step.
+
+There is no table of data fields for this use case; it is data-set-agnostic.
+
+Instead of changes in event measurements of interest observed from a fixed location (Eulerian), this use case captures measurements of interest observed from a moving representative location of the event (Lagrangian).
+ Derived requirements from use cases
+The requirements derived from the use cases described in Section 2 are summarized in the following table and figure. Although these use cases are mostly NASA-related, the derived requirements are general and more broadly applicable beyond NASA.
+
+
+Following are definitions for terms in the “Hierarchy of requirements” figure:
+
+Repr loc (representative location), fixed: The entity at a time step can be an actual ground point location (e.g., stream gauge) or a geographical area (any polygon) that is represented by a “point” location. Except for the “moving platform” case, all representative locations are fixed.
+Repr loc, var: Applies in “moving platform” case: The representative location changes from time step to time step.
+Single loc: At each time step, there is only a single representative location.
+Multiple loc: At each time step, there are two or more representative locations (e.g., all grid cells within a watershed).
++/- no: From time step to time step, there is no variation around the representative location. Typical examples are grid cell centers and ground sensors.
++/- yes: From time step to time step, there are variations around the representative location within a spatial coincidence criterion (e.g., radius from representative location). Typical example is satellite iFOVs coincident with representative location.
+Single value, var, …: At each time step, there is only a single quantity.
+Multiple value, var, …: At each time step, there are two or more quantities.
+
+
+ TSML versions vs. TSWG requirements
+OGC’s TimeseriesML (TSML) 1.0, Timeseries Profile of Observations and
+Measurements, is based on WaterML 2.0. In the latter standard, a single float value per time step is sufficient to record, e.g., a stream gauge measurement. In TMSL 1.0, values are restricted to the same definition as that in WaterML 2.0. The six use cases summarized in Section 2 each has multiple measurement values for time step (though the SWOT use case is only for richer metadata). TSML 1.0 does mention that more complex variable types, like vectors and other structured types, may be addressed in future versions. TSML 1.2 was released in December 2018 with clarifications on issues that did not address the TSWG requirements (Sec. 3).
+
+The following are plans for content changes for TimeseriesML 2.0 (from Paul Hershberg, TSML SWG):
+Harmonization with coverages: Harmonize any differences in TSML/O&M with the WCS Coverage model within OGC, including CIS1.1’s incompatibility with Timeseries Conceptual Model (15-043). Will explore if harmonization with CIS1.1 can handle multiple elements per time step (which is in the “Future Works” section of 15-043).
+Cross compatibility and communication of other ISO/OGC standards with TSML, including the following:
+Discuss the repercussion of implementations as changes are made to the following abstract models: ISO 19123 (Schema for coverage geometry and functions) and ISO 19156 (Observations and measurements).
+Consider the Observational / Coverage relationship for any misalignment and redundancies.
+Communicate and disseminate the more complex Timeseries Use Cases (Sec. 2), both outside and inside of OGC, to gauge their applicability across other domains.
+Based on the above points, the consensus is to move toward the following:
+Development of a Timeseries Profile of CIS (Coverage Implementation Schema) 1.1 (update from GMLcov 1.0).
+Development of a JSON Encoding to go along with the XML Encoding (15-042r5). (JSON is more flexible with respect to encoding multiple elements per time step.)
+
+ Ecosystem of user communities and tools/clients
+The larger there is of an ecosystem of communities with similar or related needs as those of the TSWG, the higher the probability of influencing changes to the current TSML standard to accommodate TSWG requirements (Sec. 3). The following is an initial list of such communities, with some of which the TSWG has initiated engagement.
+
+52°North - Applied Geoinformatics Research: Advancing concepts and technologies for spatial information infrastructures.
+DataCove: Environmental data and information stemming from various sources (research, governmental, citizen science).
+GeoScience Australia (GA): Uses domain standards that are openly available, to provide a common language for communicating ideas and provide consistency of meaning of the data collected, research undertaken and products created. GA is interested in exploring TMSL for distributing position data.
+X-DOMES Ontology Registry: Standards-based description of environmental sensor metadata, including provenance, is paramount to automated data discovery, access, archival, processing, as well as quality control and assessment.
+OGC Sensor Web Enablement (SWE) - Overview: See also U.S. Integrated Ocean Observing System (IOOS) adaptation of SWE Common Data Model Encoding Standard. SWE Common can accommodate multi-stations, multi-sensors, and multi-variables and, thus, would seem to be an alternative to TSML. The trade of is reduced availability for metadata.
+OGC Moving Features SWG: Purpose and application focus of this SWG are somewhat different from those of the TSWG moving “platform” use case (Sec.2-f); but, there are overlapping elements and interests.
+Geodesy Markup Language (GeodesyML): International
+effort to develop a standard way of describing (encoding) and sharing geodetic data and metadata via machine-to-machine interface. Though potentially applicable to the UNAVCO use case (Sec. 2-b), GeodesyML currently can only be used with data from GNSS instruments.
+ Recommendations
+The TSWG formally ends with this final report. However, the ongoing interactions with the OGC TSML SWG, other relevant OGC groups, and user communities with common interests (Sec. 5) will continue. The aim is to ensure, as much as possible, the TSWG requirements are incorporated into future versions of TSML (Sec. 4) or are satisfied by other non-TSML options (e.g., SWE Common).
+
+Though the TSWG requirements have yet to be incorporated into TSML (in part because the OGC version update process is a deliberate one), the work that has been done by the TSWG should, minimally, obviate the need of individuals or groups with similar interests and requirements as those of the TSWG to retrace the same exploratory path that has led to this report.
+
+The TSWG’s main recommendation to ESDIS and to any producers of time series data is to adopt the TSML as an ESDIS community standard, as it currently exists (v1.2).
+… pending 2.0 to possibly incorporate tswg reqts not currently in tsml
+… options for other than TSML (e.g., SWE) 													
+Use an established standards (e.g. OGC) whenever possible (should be obvious but too many projects try to bake their own formats, perhaps lack of knowledge of options)
+(to projects, etc.) Use TSML v1.2 
+(to ESDIS) Adopt TSML v1.2 (exists, community standard, apps available) ref. Section 2
+Options needed at present to satisfy some requirements as discussed in use cases; ref. Sec. 6e (SWE). Add text on use case 6 and OGC moving features std as something to be investigated.
+(to ESDIS and the NASA Earth science community) Work to get a more complete v2.0 that incorporates TSWG recommendations by participating in the OGC TSML SWG
+
+
+
+
+
+Tech note aimed at data producers to be released to the public?
+
+
+From Steve O’s 5/25 email:
+The recommendation should probably be something along the lines of
+Use an established standards (e.g. OGC) whenever possible (should be obvious but too many projects try to bake their own formats)
+Some guidelines on when to use OGC TimeseriesML
+Some guidelines on when to consider other OGC standards such as Moving Features or SWE.
+
+
+
+
+
+
