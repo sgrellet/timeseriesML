@@ -20,10 +20,17 @@ This file is for listing Version 2.0 Requirements and Recommendations
    
    Within OGC, look at:
       -Moving Features
-      -SWE Common
+      -SWE Common (See also U.S. Integrated Ocean Observing System (IOOS) adaptation of SWE Common Data Model Encoding Standard)
       -look into WaterML's work since WaterML split from TimeseriesML
+      
+   An intial list of communities outside of OGC include:
+      -52°North - Applied Geoinformatics Research
+      -DataCove
+      -GeoScience Australia (GA)
+      -X-DOMES Ontology Registry
+      -Geodesy Markup Language (GeodesyML)
    
-   Some of the requirements from the use cases are:
+   Some of the requirements from the NASA use cases are:
       -Multiple elements per time step
       -Divorcing TSML Metadata from Data Payload
       -Relaxing Sampling Features with Fixed Locations Requirement
