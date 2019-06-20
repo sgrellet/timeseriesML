@@ -1,1 +1,35 @@
 This file is for listing Version 2.0 Requirements and Recommendations
+
+1) Discuss and figure out the repercussion on TimeseriesML implementations as edits occur to the following International abstract models 
+   ISO 19123 (Schema for Coverages) and ISO 19156 (Observations and Measurements).
+   
+      -"Concerns of some OGC members with ISO 19123/19156 conceptual models causing problems with implementations (CIS1.1). Since ISO 
+        are editing 19123/19156 at present, concerned that implementation level feedback (CIS1.1) into this editing process are not being 
+        well communicated. This feedback is what OGC would like to contribute."
+   
+2) Look for discrepancies between the O&M/TimeSeriesML and the WCS/Coverage approach: including changes implied by W3C development of SSN 
+   (semantics sensor network) and SOSA (Sensor, Observation, Sample, and Actuator (SOSA) (https://www.w3.org/TR/vocab-ssn/)
+
+3) Consider the Observational / Coverage relationship for any mis-alignment and redundancies (focus of Charlotte, NC, Dec 2018 OGC TC 
+   TSML SWG)
+   
+4) Communicate and Disseminate the more complex Timeseries Use Cases (NASA’s), both outside and inside OGC, to gauge their need across 
+   other domains. If there is more interest outside of NASA, there will be more push to incorporate these use case's requirements into 
+   future versions of TimeseriesML. Moreover, there was a motion in the Timeseries SWG meeting in Singapore, March 2019, to "decipher whether 
+   any of NASA’s Use Case Requirements are duplicated or shared among other disciplines." 
+   
+   Within OGC, look at:
+      -Moving Features
+      -SWE Common
+      -look into WaterML's work since WaterML split from TimeseriesML
+   
+   Some of the requirements from the use cases are:
+      -Multiple elements per time step
+      -Divorcing TSML Metadata from Data Payload
+      -Relaxing Sampling Features with Fixed Locations Requirement
+      
+5) Consider the development of a Timeseries Profile of CIS1.1 (update, as it stands now, from GMLcov 1.0). The TimeseriesML abstract model 
+   (15-043) conforms to ISO 19123 (Schema for Coverages) but not CIS1.1. the concrete implementation. 
+
+6) Consider the development of a JSON Encoding to go along with the XML Encoding (15-042r5)
+   -JSON, as a format, may handle multiple elements per time step more easily.
