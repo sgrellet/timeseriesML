@@ -28,7 +28,7 @@ This file is for listing Version 2.0 Requirements and Recommendations
       -Divorcing TSML Metadata from Data Payload
       -Relaxing Sampling Features with Fixed Locations Requirement
       
-Based on the above points, the consensus is to move toward the following for Version 2.0:
+Based on the above points so far, the consensus is to move toward the following for Version 2.0. (we need to decide on others):
 
 5) Consider the development of a Timeseries Profile of CIS1.1 (update, as it stands now, from GMLcov 1.0). The TimeseriesML abstract model 
    (15-043) conforms to ISO 19123 (Schema for Coverages) but not CIS1.1. the concrete implementation. 
