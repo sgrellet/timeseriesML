@@ -18,6 +18,9 @@ This file is for listing Version 2.0 Requirements and Recommendations
    future versions of TimeseriesML. Moreover, there was a motion in the Timeseries SWG meeting in Singapore, March 2019, to "decipher whether 
    any of NASA’s Use Case Requirements are duplicated or shared among other disciplines." 
    
+   See NASA TSWG Final Report here for more info: 
+      - https://docs.google.com/document/d/1XLDkYktX1r0hlNK8g9Wv7i6I5Hi36r7NG4hXzkMpGEg/edit?usp=sharing
+   
    Within OGC, look at:
       -Moving Features
       -SWE Common (See also U.S. Integrated Ocean Observing System (IOOS) adaptation of SWE Common Data Model Encoding Standard)
@@ -32,8 +35,12 @@ This file is for listing Version 2.0 Requirements and Recommendations
    
    Some of the requirements from the NASA use cases are:
       -Multiple elements per time step
-      -Divorcing TSML Metadata from Data Payload
+      -Metadata
+         --Divorcing TSML Metadata from Data Payload
+         --Richer Metadata for entire collection of time series, individual time series, time segements in a time series, and individual 
+           data points in a time series (handled currently, with Ver 1.2)
       -Relaxing Sampling Features with Fixed Locations Requirement
+         --
       
 Based on the above points so far, the consensus is to move toward the following for Version 2.0. (we need to decide on others):
 
