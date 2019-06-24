@@ -40,7 +40,9 @@ This file is for listing Version 2.0 Requirements and Recommendations
          --Richer Metadata for entire collection of time series, individual time series, time segements in a time series, and individual 
            data points in a time series (handled currently, with Ver 1.2)
       -Relaxing Sampling Features with Fixed Locations Requirement
-         --
+         --For point/bounding box/shape on ground, time steps of varying spatial locations (within spatial coincidence criterion) and at
+           irregular intervals.
+         --For time series of (or from) a moving platform, time steps of varying spatial locations and at irregular intervals.
       
 Based on the above points so far, the consensus is to move toward the following for Version 2.0. (we need to decide on others):
 
