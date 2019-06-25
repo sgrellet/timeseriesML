@@ -11,7 +11,7 @@ This file is for listing Version 2.0 Requirements and Recommendations
    (semantics sensor network) and SOSA (Sensor, Observation, Sample, and Actuator (SOSA) (https://www.w3.org/TR/vocab-ssn/)
 
 3) Look into the Observational / Coverage relationship for any mis-alignment and redundancies (focus of Charlotte, NC, Dec 2018 OGC TC 
-   TSML SWG)
+   TSML SWG). See 
    
 4) Communicate and Disseminate the more complex Timeseries Use Cases (NASA’s), both outside and inside OGC, to gauge their need across 
    other domains. If there is more interest outside of NASA, there will be more push to incorporate these use case's requirements into 
@@ -34,7 +34,18 @@ This file is for listing Version 2.0 Requirements and Recommendations
       -Geodesy Markup Language (GeodesyML)
    
    Some of the requirements from the NASA use cases are:
+   
       -Multiple elements per time step
+         --Aggregation of Other Things (1.3 & backward compatible, ?)
+            ---Satellite precipitation measurements having 10 or more tightly related variables per observation (see NASA IMERG use case
+               for example)
+         Below are not NASA centric, but involve the need for the multiple elements per time step requirement:
+         --Vectors or Tensors such as:
+            ---Timeseries of wind vectors (speed & direction values) at a certain point 
+            ---Wind Stress (tensor) (Chris Little noted) (1.3 & backward compatible)
+         --Aggregation of scalars (pressure, temp, wind velocity, humidity). Collection of parameters at one point – timeseries for all) 
+           (1.3 & backward compatible)
+    
       -Metadata
          --Divorcing TSML Metadata from Data Payload
          --Richer Metadata for entire collection of time series, individual time series, time segements in a time series, and individual 
@@ -43,12 +54,21 @@ This file is for listing Version 2.0 Requirements and Recommendations
          --For point/bounding box/shape on ground, time steps of varying spatial locations (within spatial coincidence criterion) and at
            irregular intervals.
          --For time series of (or from) a moving platform, time steps of varying spatial locations and at irregular intervals.
-      
+
+5) Geometries (Ben Koziol - NOAA Affiliate [mailto:ben.koziol@noaa.gov] )
+   -“I have just spotted your posting about the proposed enhancement of NetCDF-4 and retrofit to NetCDF-3 of geometry time series, which 
+    sounds very interesting. Especially as you mentioned OGC WKT. I also think that there may be some --concepts in the TimeSeriesML that 
+    have overlap with the CF-NetCDF conventions ('interpolation type' & 'Cell method') that could be re-used.” -- Rectification? netCDF is 
+    changing too…maybe a 2.0/2.1 addition ?
+
+6) Images/Tiles (though this is encroaching on video encoding or n-dimensional tiles) (scope issue ?)
+ 
+
 Based on the above points so far, the consensus is to move toward the following for Version 2.0. (we need to decide on others):
 
-5) Consider the development of a Timeseries Profile of CIS1.1 (update, as it stands now, from GMLcov 1.0). The TimeseriesML abstract model 
+Consider the development of a Timeseries Profile of CIS1.1 (update, as it stands now, from GMLcov 1.0). The TimeseriesML abstract model 
    (15-043) conforms to ISO 19123 (Schema for Coverages) but not CIS1.1. the concrete implementation. 
       -Explore if harmonization with CIS1.1 can handle multiple elements per time step (which is in the “Future Works” section of 15-043).
 
-6) Consider the development of a JSON Encoding to go along with the XML Encoding (15-042r5)
+Consider the development of a JSON Encoding to go along with the XML Encoding (15-042r5)
    -JSON, as a format, may handle multiple elements per time step more easily.
