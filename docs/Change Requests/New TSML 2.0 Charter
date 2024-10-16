@@ -1,0 +1,137 @@
+
+TITLE: TimeSeriesML Standards Working Group Charter
+Author Name (s): James Tomkins, Paul Hershberg
+Email: james.tomkins@metoffice.gov.uk, paul.hershberg@noaa.gov
+DATE: October 16, 2014
+CATEGORY: SWG Charter
+
+To:  OGC members & interested parties
+
+A new OGC Standards Working Group is being formed. The OGC members listed below have proposed the OGC TimeSeriesML SWG.  The SWG proposal provided in this document meets the requirements of the OGC Technical Committee (TC) Policies and Procedures.
+
+The SWG name, statement of purpose, scope, list of deliverables, audience, and language specified in the proposal will constitute the SWG's official charter. Technical discussions may occur no sooner than the SWG's first meeting.
+
+This SWG will operate under the OGC IPR Policy. The eligibility requirements for becoming a participant in the SWG at the first meeting (see details below) are that:
+
+•	You must be an employee of an OGC member organization or an individual
+member of OGC;
+•	The OGC member must have signed the OGC Membership agreement;
+•	You must notify the SWG chair of your intent to participate to the first meeting. Members may do so by logging onto the OGC Portal and navigating to the Observer page and clicking on the link for the SWG they wish to join and;
+•	You must attend meetings of the SWG. The first meeting of this SWG is at the time and date fixed below. Attendance may be by teleconference.
+
+Of course, participants also may join the SWG at any time. The OGC and the SWG welcomes all interested parties.
+
+Non-OGC members who wish to participate may contact us about joining the OGC. In addition, the public may access some of the resources maintained for each SWG: the SWG public description, the SWG Charter, Change Requests, and public comments, which will be linked from the SWG’s page.
+
+Please feel free to forward this announcement to any other appropriate lists. The OGC is an open standards organization; we encourage your feedback.
+1.	Purpose of the TimeSeriesML Standards Working Group
+TimeSeriesML is a proposed Open Geospatial Consortium encoding standard for the representation of time series observations data. The work activities defined in this charter are inspired by the OGC change request 13-123 (https://portal.opengeospatial.org/files/?artifact_id=56304) concerning the repackaging of current standard WaterML 2.0 Part 1.
+It is intended that TimeSeriesML 1.0 will be implemented as an application schema of the Geography Markup Language version 3.3 and make use of the OGC Observations and Measurements (O&M) standard and the OMXML GML Application Schema.
+The purpose of this Standards Working Group is to develop and propose a candidate standard for TimeSeriesML and progress it to the state of an adopted OGC Standard. This goal will be achieved by conducting a review of WaterML 2.0 Part 1, developing and publishing a draft standard, and processing comments received during a public comment period.
+2.	Business Value Proposition
+The SWG will ensure that the standard is consistent with the OGC Standards Baseline and Business Plan.
+3.	Scope of Work
+3.1	Statement of relationship of planned work to the current OGC standards baseline
+The SWG focuses on the development of a TimeSeriesML 1.0 candidate standard submission, coordinating a public comment period, and processing any comments received during this period. The final deliverable of the SWG will be a version of the candidate standard for consideration by the OGC membership for approval as an OGC standard. This work is to align with the existing OGC standards baseline where appropriate.
+3.2	What is Out of Scope?
+While OGC standard legacy web services such as WFS, WMS, WCS, and SOS, etc., and more recently, OGC APIs (which build upon legacy OGC web service standards but define resource-centric APIs that take advantage of modern web development practices) are the preferred mechanism for exchanging information, TimeSeriesML 1.0 will not specify a specific transport mechanism or service interface. However, members of the SWG will assess the compatibility of the draft TimeSeriesML 1.0 with existing OGC services.
+Following the development of the standard this SWG will focus only on processing comments received during the 30 day public comment period. Separately submitted Change Requests are out of scope, and will only be considered at the discretion of the SWG.
+3.3	Specific Contribution of Existing Work as a Starting Point
+The starting point for the work will be the OGC change request 13-123 and the already standardised WaterML 2.0 Part 1. TimeSeriesML 1.0 shall satisfy the core (non-hydrology) requirements and implementation patterns from WaterML 2.0 Part 1 and should include both domain-range and time-value-pair style implementations.
+3.4	Is this a persistent SWG? 
+No
+3.5	When can SWG be inactivated?
+When the initial work of the SWG is completed:
+•	A draft standard has been developed and circulated for comments
+•	All comments submitted during the 30 day public comment period have been dealt with to the satisfaction of the SWG. 
+•	The SWG approves the TimeSeriesML 1.0 Candidate Standard and Abstract Test Suite (ATS) document, for submission to the TC for approval as an adopted standard. 
+•	The candidate standard has been approved by the OGC Technical and Planning Committees as an Adopted OGC standard.
+Note, the SWG was re-activated in late 2016 for the addition of use cases for the National Weather Service. It has remained active as candidate requirements were gathered for TimeSeriesML 2.0 (see section 4.2). When this work is completed, the SWG may again become inactive.
+4.	Description of Deliverables
+The following deliverables will result from the work of this SWG:
+•	A draft version of the TimeSeriesML 1.0 for comment
+•	An annotated list of all comments submitted during the 30 day public comment period, including the comment, submitter, rationale, comment type/priority, and the response of the SWG.
+•	A final version of the TimeSeriesML 1.0 Standard and ATS documents for submission to the TC.
+The following schedule of activities is planned:
+•	SWG startup.  2014 September
+•	OAB/ONA RFC review; SWG prepares candidate standard for vote for public release.  2015 March
+•	SWG votes to release TimeSeries 1.0 for public comment.  2015 April
+•	OGC staff develops PR and announces availability for public comment. 2015 April
+•	30-day public comment period. 2015 April -May
+•	SWG collects and collates comments into a single document. 2015 June
+•	SWG discusses and votes on comments and makes resulting edits towards final TimeSeriesML 1.0 candidate standard. 2015 June
+•	SWG votes to approve release of TimeSeriesML 1.0 candidate standard for approval as an OGC adopted standard. 2015 June
+•	60 day IPR review period and associated TC e-vote to approve TimeSeriesML 1.0 candidate standard as an OGC adopted standard. 2015 June – August.
+4.1	Initial Deliverables
+A draft version of the TimeSeriesML 1.0 standard, and any draft versions of future TimeSeriesML standard updates.
+4.2	Additional SWG Tasks
+Revision work of OGC Abstract Specification Topic 20/ISO 19156:2023 was agreed by both OGC and ISO/TC 211 in 2018 and completed in 2023. The purpose of the OGC O&M Standards Working Group (SWG) is to revise existing, and draft new, OGC Standards considering the O&M conceptual models (Note, O&M is undergoing a name change to Observations, Measurements, and Samples). 
+Revision work for ISO 19123:2005, which defines a conceptual schema for the spatial characteristics of coverages, is also occurring. The revised specification is undergoing a revision in three parts: ISO 19123-1:2023 (the abstract coverage model), 19123-2:2018 (the concrete, implementable, conformance-testable coverage structure), and 19123-3:2023 (the coverage processing language). Changes occurring from ISO 19123:2005 to the new three part standard may also be considered for incorporation into TimeSeriesML 2.0.
+In response to the O&M and Coverages revisions, work began in 2023 to update the TimeSeriesML 1.0 conceptual model to TimeSeriesML 2.0.
+This includes incorporating requirements, mappings, and proposed conceptual model changes for TimeSeriesML 2.0.  These new features were discussed in TimeSeriesML SWG meetings in March 2021, March 2022, and June 2023.
+The first meeting of the committee to address updates to the TimeSeriesML 2.0 conceptual model was held on July 14, 2023. Monthly meetings will subsequently occur. Call-in information will be provided to the SWG's e-mail list and on the portal calendar in advance of meetings. 
+5.	IPR Policy for this SWG
+RAND-Royalty Free. 
+6.	Anticipated Participants
+The target audience/participants of TimeSeriesML 1.0 includes: application developers; GIS and software vendors; the meteorologic and hydrologic research and education community; and the consumer.
+Development of TimeSeriesML 1.0 will be undertaken by the following OGC members:
+
+a) Australian Commonwealth Scientific and Industrial Research Organisation (CSIRO)
+b) Australian Bureau of Meteorology (BoM)
+c) Météo-France
+d) Met Office
+e) Kisters
+f) Environment Canada
+g) US National Weather Service
+h) Landcare Research New Zealand Ltd
+It is envisaged that these organization, at least, will participate in the SWG.
+7.	Domain Working Group Endorsement
+
+8.	Other Informative Remarks about this SWG
+
+a. Similar or Applicable Standards Work (OGC and Elsewhere).
+
+The following standards and projects may be relevant to the SWG's planned work, although none currently provide the functionality or domain focus anticipated by this committee's deliverables:
+WaterML2.0 - part 1: TimeSeries
+OGC Observations and Measurements 2.0, OGC AS Topic 20 (also ISO DIS 19156:2010)
+OGC Geography Markup Language v3.3 (also ISO 19136:2007)
+OGC Observations and Measurements XML (OMXML) Encoding Standard
+OGC SWE Common Data Model 2.0 
+ISO 19109:2005 Geographic Information – Rules for application schema
+ISO 19110:2005 Geographic Information – Methodology for feature cataloguing
+
+b. Details of the First Meeting
+
+The first meeting of the committee will be late September, early October 2014. Call-in 
+information will be provided to the SWG's e-mail list and on the portal calendar in advance of the meeting. The main items of business will be to select (co-) chair(s) for the SWG, and the primary editor for the standard, and agree on a schedule of work, including regular meetings if required.
+
+c. Projected On-going Meeting Schedule
+
+The work of the committee will be carried out primarily by email and conference calls, possibly monthly. Scheduling of conference calls will be determined by the chair. Face-to-face meetings are not planned.
+
+d. Supporters of the Proposal (Charter Members)
+
+The following people support this proposal and are committed to the Charter and projected meeting schedule. These members are known as SWG Founding or Charter members. The charter members agree to the SoW and IPR terms as defined in this charter. The charter members have voting rights beginning the day the SWG is officially formed. Charter Members are shown on the public SWG page. Extend the table as necessary.
+
+Name	Organization
+James Tomkins	Met Office
+Peter Taylor	CSIRO
+Tony Boston	Australian Bureau of Meteorology
+Dominic Lowe	Australian Bureau of Meteorology
+Frédéric Guillaud	Météo-France
+Bruce Bannerman	Australian Bureau of Meteorology
+Michael Utech	Kisters
+Michael Natschke	Kisters
+James Doyle	Environment Canada
+Jack Lindsey	Environment Canada
+Paul Hershberg	US National Weather Service
+Alistair Ritchie	Landcare Research New Zealand
+Christopher Thorne	Environment Canada
+Kathi Schleidt	DataCove
+Stephen Olding	NASA
+
+e. Convener(s)
+
+James Tomkins, Paul Hershberg, Dominic Lowe, Jack Lindsey
+
+
